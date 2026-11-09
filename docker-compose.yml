@@ -1,0 +1,16 @@
+services:
+  koi:
+    build: .
+    image: koi-cards:latest
+    container_name: koi-cards
+    restart: unless-stopped
+    ports:
+      - "8080:3001"
+    volumes:
+      # Persistem os dados mesmo se o container for recriado
+      - koi-data:/app/data
+      - koi-uploads:/app/public/images/uploads
+
+volumes:
+  koi-data:
+  koi-uploads:
